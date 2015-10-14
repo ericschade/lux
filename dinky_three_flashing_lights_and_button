@@ -1,0 +1,41 @@
+int buttonInput = 5;
+int ledOutput1 = 3;
+int ledOutput2 = 2;
+int ledOutput3 = 4;
+int buttonState = 0;
+
+
+void setup() {
+
+pinMode(ledOutput1, OUTPUT);
+pinMode(ledOutput2, OUTPUT);
+pinMode(ledOutput3, OUTPUT);
+digitalWrite(buttonInput, HIGH);
+
+}
+
+void loop() {
+
+  buttonState = digitalRead(buttonInput);
+  if(buttonState==LOW){
+  digitalWrite(ledOutput1, HIGH);
+  delay(0);
+  digitalWrite(ledOutput1, LOW);
+  delay(333);
+
+  digitalWrite(ledOutput2, HIGH);
+  delay(0);
+  digitalWrite(ledOutput2, LOW);
+  delay(333);
+
+  digitalWrite(ledOutput3, HIGH);
+  delay(0);
+  digitalWrite(ledOutput3, LOW);
+  delay(333);
+  } else{
+    digitalWrite(ledOutput1,LOW);
+    digitalWrite(ledOutput2,LOW);
+    digitalWrite(ledOutput3,LOW);
+  }
+
+}
