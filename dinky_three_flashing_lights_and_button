@@ -1,41 +1,44 @@
-int buttonInput = 5;
-int ledOutput1 = 3;
-int ledOutput2 = 2;
-int ledOutput3 = 4;
-int buttonState = 0;
+
+int Button = 2;
+int LED1 = 3;
+int LED2 = 4;
+int LED3 = 5;
+int delay_time = 100;
+
+int ButtonState;
 
 
 void setup() {
-
-pinMode(ledOutput1, OUTPUT);
-pinMode(ledOutput2, OUTPUT);
-pinMode(ledOutput3, OUTPUT);
-digitalWrite(buttonInput, HIGH);
-
+  
+  Serial.begin(9600);
+ 
+ pinMode(Button, INPUT);
+ 
+ pinMode(LED1, OUTPUT);
+ pinMode(LED2, OUTPUT);
+ pinMode(LED3, OUTPUT);
+  
 }
 
 void loop() {
-
-  buttonState = digitalRead(buttonInput);
-  if(buttonState==LOW){
-  digitalWrite(ledOutput1, HIGH);
-  delay(0);
-  digitalWrite(ledOutput1, LOW);
-  delay(333);
-
-  digitalWrite(ledOutput2, HIGH);
-  delay(0);
-  digitalWrite(ledOutput2, LOW);
-  delay(333);
-
-  digitalWrite(ledOutput3, HIGH);
-  delay(0);
-  digitalWrite(ledOutput3, LOW);
-  delay(333);
-  } else{
-    digitalWrite(ledOutput1,LOW);
-    digitalWrite(ledOutput2,LOW);
-    digitalWrite(ledOutput3,LOW);
-  }
-
-}
+ 
+ ButtonState = digitalRead(Button);
+ Serial.println(ButtonState);
+ 
+ if (ButtonState == 1) {
+    digitalWrite(LED1, HIGH);
+    delay(delay_time);
+    digitalWrite(LED1,LOW);
+    digitalWrite(LED2,HIGH);
+    delay(delay_time);
+    digitalWrite(LED2,LOW);
+    digitalWrite(LED3,HIGH);
+    delay(delay_time);
+    digitalWrite(LED3,LOW);
+ }
+ else {
+   digitalWrite(LED1,LOW);
+   digitalWrite(LED2,LOW);
+   digitalWrite(LED3,LOW);
+ }
+ }
